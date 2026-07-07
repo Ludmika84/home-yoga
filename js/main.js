@@ -89,16 +89,14 @@
     if (header) {
       function onScroll() {
         header.classList.toggle('site-header--scrolled', window.scrollY > 16);
-      }
- 
-      setTimeout(onScroll, 0); 
-      
+      }  
+      window.requestAnimationFrame(onScroll);       
       window.addEventListener('scroll', onScroll, { passive: true });
     }
   }
 
   function initAccordion() {
-    document.querySelectorAll('.accordion__trigger').forEach(function (btn) {
+    document.querySelectorAll('.accordion__trigger').forEach(function (btn) {https://github.com/Ludmika84/home-yoga/blob/main/js/main.js
       btn.addEventListener('click', function () {
         var item = btn.closest('.accordion__item');
         var open = item.classList.contains('accordion__item--open');
