@@ -1,0 +1,231 @@
+.hero {
+  position: relative;
+  min-height: 870px;
+  display: flex;
+  align-items: flex-start;
+  color: $color-white;
+  overflow: hidden;
+  background-color: $color-surface-dark;
+
+  &:not(.hero--contacts)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(0deg, rgba(31, 38, 35, 0.45), rgba(31, 38, 35, 0.35));
+    pointer-events: none;
+  }
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    z-index: 0;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 2;
+    width: 817px;
+    max-width: calc(100% - 40px);
+    margin: 46px 20px 60px auto;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  &__title-wrap {
+    flex: 0 0 53.333%;
+    min-height: 594px;
+    padding: 30px 20px 30px 0;
+    border: none;
+    border-right: 13px solid $color-primary;
+  }
+
+  &__title {
+    margin: 0;
+    color: $color-white;
+    font-family: $font-base;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  &__content {
+    flex: 0 0 46.667%;
+    min-height: 594px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: $color-white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  &__credit {
+    margin: 26px 0 0;
+    font-size: inherit;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+
+    a {
+      color: $color-white;
+      border-bottom: 1px solid $color-white;
+
+      &:hover { opacity: 0.85; }
+    }
+  }
+
+  .btn {
+    margin-top: 34px;
+    padding: 18px 54px;
+    border-radius: $radius-pill;
+    font-size: 0.875rem;
+    letter-spacing: 2px;
+
+    &:hover {
+      background: $color-white;
+      color: $color-primary-dark;
+    }
+
+    &--outline {
+      margin-top: 12px;
+      background: transparent;
+      color: $color-white;
+      border: 2px solid rgba($color-white, 0.65);
+
+      &:hover {
+        background: rgba($color-white, 0.12);
+        color: $color-white;
+      }
+    }
+  }
+
+  &--contacts {
+    min-height: auto;
+    background: $color-accent-light;
+
+    .hero__inner {
+      @include container;
+      width: 100%;
+      max-width: $container;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: $gap;
+      padding-top: $section-pad;
+      padding-bottom: $section-pad;
+    }
+
+    .hero__media {
+      flex: 1 1 45%;
+      min-height: 320px;
+      border-radius: $radius-md;
+      overflow: hidden;
+      background-color: $color-grey-10;
+      aspect-ratio: 4 / 3;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    .hero__content {
+      flex: 1 1 45%;
+      min-height: auto;
+      padding: 0;
+      color: $color-grey-90;
+      justify-content: center;
+    }
+
+    .hero__title-wrap {
+      min-height: auto;
+      border: none;
+      padding: 0;
+    }
+
+    .hero__title {
+      color: $color-grey-90;
+      font-size: $type-h1;
+      text-shadow: none;
+    }
+
+    .hero__text {
+      color: $color-grey-90;
+      text-shadow: none;
+    }
+  }
+
+  &--about {
+    .hero__media img {
+      object-position: center;
+    }
+  }
+
+  .page--practice & {
+    background-color: $color-surface-dark;
+  }
+
+  @include respond(xl) {
+    min-height: 764px;
+
+    &__inner { width: 744px; }
+  }
+
+  @include respond(lg) {
+    min-height: 620px;
+
+    &__inner { width: 720px; }
+
+    &__title-wrap,
+    &__content { min-height: 100px; }
+  }
+
+  @include respond(md) {
+    min-height: 850px;
+
+    &__bg {
+      object-position: 21.75% 50%;
+    }
+
+    &__inner { width: 348px; }
+
+    &__title-wrap {
+      min-height: 166px;
+      padding-right: 10px;
+    }
+
+    &__content {
+      min-height: 377px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  @include respond(sm) {
+    min-height: 868px;
+
+    &__inner { width: 291px; }
+
+    &__title-wrap {
+      min-height: 139px;
+      padding-right: 20px;
+    }
+
+    &__title { font-size: 2.25rem; }
+
+    &__content { min-height: 406px; }
+  }
+}

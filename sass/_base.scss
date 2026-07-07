@@ -1,0 +1,86 @@
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: $font-base;
+  font-size: $type-body;
+  line-height: 1.7;
+  color: $color-text;
+  background: $color-white;
+  overflow-x: clip;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+
+  &:hover { color: darken($color-primary, 8%); }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.75em;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+h1 { font-size: $type-h1; }
+h2 { font-size: $type-h2; }
+h3 { font-size: $type-h3; }
+h4 { font-size: $type-h4; font-family: $font-heading; }
+h5 { font-size: $type-h5; }
+h6 { font-size: $type-body; }
+
+p { margin: 0 0 1em; }
+
+.page__title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.container { @include container; }
+
+@media (max-width: 360px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .site-header__inner {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.section {
+  @include section-pad;
+
+  &--grey {
+    background: $color-warm-bg;
+
+    &:has(+ .section--grey) {
+      padding-bottom: calc(#{$section-pad} / 2);
+    }
+
+    & + & {
+      padding-top: calc(#{$section-pad} / 2);
+    }
+  }
+  &--accent { background: $color-accent-light; color: $color-text; }
+  &--accent-light { background: $color-accent-light; }
+  &--white { background: $color-white; }
+  &--sage { background: $color-accent-light; }
+
+  &.gallery-block,
+  &.contact-block:not(.contact-block--page) { padding: 0; }
+}

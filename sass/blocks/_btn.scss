@@ -1,0 +1,74 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  border: none;
+  border-radius: $radius-pill;
+  background: $color-primary;
+  color: $color-white;
+  font-size: $type-btn;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    background: $color-primary-dark;
+    color: $color-white;
+  }
+
+  &--dark {
+    background: $color-surface-dark;
+    color: $color-white;
+
+    &:hover { background: lighten($color-surface-dark, 6%); }
+  }
+
+  &--full { width: 100%; }
+
+  &--outline {
+    background: transparent;
+    color: $color-primary;
+    border: 2px solid $color-primary;
+    box-shadow: none;
+
+    &:hover {
+      background: $color-primary;
+      color: $color-white;
+    }
+  }
+
+  &--lg {
+    padding: 18px 42px;
+    font-size: 0.875rem;
+  }
+
+  &--header {
+    padding: 11px 22px;
+    font-size: 0.72rem;
+    background: $color-primary;
+    color: $color-white;
+    box-shadow: 0 8px 22px rgba($color-primary, 0.28);
+
+    &:hover {
+      background: $color-primary-dark;
+      color: $color-white;
+      transform: translateY(-1px);
+    }
+  }
+
+  &--header-light {
+    width: 100%;
+    background: rgba($color-white, 0.12);
+    color: $color-white;
+    border: 1px solid rgba($color-white, 0.22);
+    box-shadow: none;
+
+    &:hover {
+      background: rgba($color-white, 0.2);
+      color: $color-white;
+    }
+  }
+}

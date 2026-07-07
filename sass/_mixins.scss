@@ -1,0 +1,50 @@
+@mixin container {
+  width: 100%;
+  max-width: $container;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@mixin flex-row($gap: $gap) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap;
+}
+
+@mixin card-surface {
+  background: $color-white;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+}
+
+@mixin section-pad {
+  padding: $section-pad 0;
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin respond($bp) {
+  @if $bp == xl { @media (max-width: $bp-xl) { @content; } }
+  @else if $bp == lg { @media (max-width: $bp-lg) { @content; } }
+  @else if $bp == md { @media (max-width: $bp-md) { @content; } }
+  @else if $bp == sm { @media (max-width: $bp-sm) { @content; } }
+}
+
+@mixin media-cover($ratio: $media-ratio) {
+  width: 100%;
+  aspect-ratio: $ratio;
+  object-fit: cover;
+  object-position: center;
+  border-radius: $radius-md;
+  display: block;
+}

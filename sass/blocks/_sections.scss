@@ -1,0 +1,357 @@
+.studio {
+  padding: $section-pad 0;
+  background: $color-accent-light;
+
+  &__layout {
+    @include container;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  &__media {
+    margin: 0;
+  }
+
+  &__image {
+    @include media-cover(4 / 3);
+    box-shadow: $shadow-card;
+  }
+
+  &__panel {
+    @include card-surface;
+    padding: 36px 32px;
+    text-align: left;
+
+    h2 {
+      margin: 0 0 1rem;
+      font-weight: 700;
+      color: $color-primary-dark;
+    }
+
+    p:not(.studio__credit) {
+      font-size: 1.0625rem;
+      font-weight: 400;
+      line-height: 1.7;
+      margin: 0 0 1rem;
+      color: $color-text-muted;
+    }
+
+    .btn {
+      margin-top: 0.5rem;
+    }
+  }
+
+  &__credit {
+    font-size: 1rem;
+    font-style: italic;
+    color: $color-text-muted;
+    margin: 0 0 1rem;
+  }
+
+  @include respond(lg) {
+    &__layout {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.split {
+  &__grid {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+    position: relative;
+  }
+
+  &__photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+
+    img {
+      @include media-cover(4 / 3);
+      box-shadow: $shadow-card;
+    }
+  }
+
+  &__panel {
+    @include card-surface;
+    padding: 36px 32px;
+    z-index: 1;
+  }
+
+  &__quote {
+    @include card-surface;
+    border-left: 4px solid $color-primary;
+    padding: 24px;
+    color: $color-text-muted;
+    margin-top: 0;
+    grid-column: 1 / -1;
+  }
+
+  @include respond(lg) {
+    &__grid { grid-template-columns: 1fr; }
+  }
+}
+
+.showcase {
+  position: relative;
+  overflow: hidden;
+
+  &__grid {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  &__media img {
+    @include media-cover(4 / 3);
+    max-width: 100%;
+    box-shadow: $shadow-card;
+  }
+
+  &__panel {
+    @include card-surface;
+    padding: 36px 32px;
+
+    h3 {
+      margin: 1.5rem 0 0.5rem;
+      font-size: $type-h5;
+      font-weight: 600;
+      line-height: 1.3;
+
+      &:first-of-type { margin-top: 1rem; }
+    }
+
+    p {
+      margin: 0 0 0.85em;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+  }
+
+  &__lead {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+
+  &--hub {
+    overflow-x: clip;
+
+    .showcase__intro {
+      @include container;
+      max-width: 720px;
+      text-align: center;
+      margin: 0 auto 2.5rem;
+
+      .page__title { margin-bottom: 1rem; }
+
+      p {
+        margin: 0 0 1em;
+        line-height: 1.65;
+
+        &:last-child { margin-bottom: 0; }
+      }
+    }
+
+    .showcase__hub {
+      @include container;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 360px) minmax(0, 1fr);
+      grid-template-rows: auto auto;
+      gap: 24px;
+      align-items: center;
+      padding-bottom: 48px;
+    }
+
+    .showcase__media--center {
+      grid-column: 2;
+      grid-row: 1 / 3;
+      justify-self: center;
+      width: 100%;
+      z-index: 1;
+
+      img {
+        @include media-cover(3 / 4);
+        max-width: 360px;
+        margin: 0 auto;
+        box-shadow: $shadow-soft;
+      }
+    }
+
+    .showcase__card {
+      @include card-surface;
+      padding: 22px 20px;
+      box-shadow: $shadow-soft;
+      text-align: left;
+      max-width: 340px;
+
+      h3 {
+        margin: 0 0 0.35rem;
+        font-size: $type-h5;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      p {
+        margin: 0;
+        font-size: 0.9375rem;
+        line-height: 1.6;
+      }
+
+      .showcase__card-sub + p {
+        margin-top: 0.65rem;
+      }
+    }
+
+    .showcase__card-sub {
+      margin: 0 0 0.65rem !important;
+      font-size: $type-small !important;
+      font-weight: 600;
+      color: $color-text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .showcase__card--tl {
+      grid-column: 1;
+      grid-row: 1;
+      justify-self: end;
+      align-self: end;
+    }
+
+    .showcase__card--tr {
+      grid-column: 3;
+      grid-row: 1;
+      justify-self: start;
+      align-self: end;
+    }
+
+    .showcase__card--bl {
+      grid-column: 1;
+      grid-row: 2;
+      justify-self: end;
+      align-self: start;
+    }
+
+    .showcase__card--br {
+      grid-column: 3;
+      grid-row: 2;
+      justify-self: start;
+      align-self: start;
+    }
+
+    @include respond(lg) {
+      .showcase__hub {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        max-width: 480px;
+      }
+
+      .showcase__media--center {
+        order: -1;
+        margin-bottom: 0.5rem;
+      }
+
+      .showcase__card {
+        max-width: none;
+      }
+    }
+  }
+
+  @include respond(lg) {
+    &__grid { grid-template-columns: 1fr; }
+  }
+}
+
+.gallery-block {
+  background: $color-warm-bg;
+
+  &__stage {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+    padding: $section-pad 20px;
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  &__item {
+    display: block;
+    overflow: hidden;
+    border-radius: $radius-md;
+    box-shadow: $shadow-soft;
+    transition: box-shadow 0.25s ease;
+
+    img {
+      @include media-cover(16 / 10);
+      transition: none;
+    }
+
+    &:hover {
+      box-shadow: $shadow-card;
+
+      img { transform: none; }
+    }
+  }
+
+  &__panel {
+    @include card-surface;
+    padding: 36px 32px;
+    text-align: left;
+
+    h2 {
+      margin: 0 0 1rem;
+      font-family: $font-heading;
+      font-weight: 700;
+      color: $color-primary-dark;
+      line-height: 1.2;
+    }
+
+    p:not(.gallery-block__credit) {
+      margin: 0 0 1rem;
+      line-height: 1.7;
+      color: $color-text-muted;
+    }
+
+    .btn { margin-top: 0.5rem; }
+  }
+
+  &__credit {
+    margin: 0;
+    font-style: italic;
+    color: $color-text-muted;
+
+    a {
+      color: $color-primary;
+      border-bottom: 1px solid $color-primary;
+    }
+  }
+
+  @include respond(lg) {
+    &__stage {
+      grid-template-columns: 1fr;
+    }
+
+    &__items {
+      order: -1;
+      max-width: 520px;
+      margin: 0 auto;
+      width: 100%;
+    }
+  }
+}

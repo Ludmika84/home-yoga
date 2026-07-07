@@ -1,0 +1,199 @@
+// Scroll-triggered entrance animations (Nicepage customAnimationIn equivalent)
+
+@keyframes anim-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-300px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes anim-slide-in-left-sm {
+  from {
+    opacity: 0;
+    transform: translate3d(-200px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes anim-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translate3d(300px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes anim-slide-in-top {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 300px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes anim-slide-in-top-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -300px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes anim-zoom-in {
+  from {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes anim-zoom-out-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-300px, 0, 0) scale3d(1.39, 1.39, 1.39);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+}
+
+@keyframes anim-rotate-in {
+  from {
+    opacity: 0;
+    transform: rotate3d(0, 0, 1, -180deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+}
+
+@keyframes anim-rotate-bar {
+  from {
+    opacity: 0;
+    transform: translate3d(50px, 0, 0) scale3d(0.3, 0.3, 0.3) rotate3d(0, 0, 1, -180deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotate3d(0, 0, 1, 0deg);
+  }
+}
+
+@keyframes anim-icon-in {
+  from {
+    opacity: 0;
+    transform: scale(0.35) translate3d(0, -24px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.08) translate3d(0, 4px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@mixin anim-pending($transform) {
+  &.anim--pending {
+    opacity: 0;
+    visibility: hidden;
+    transform: $transform;
+    animation-name: none !important;
+  }
+}
+
+.anim {
+  animation-duration: 1.25s;
+  animation-fill-mode: both;
+  animation-timing-function: ease;
+
+  &:not(.anim--pending) {
+    visibility: visible;
+  }
+
+  &--from-left {
+    animation-name: anim-slide-in-left;
+    @include anim-pending(translate3d(-300px, 0, 0));
+  }
+
+  &--from-left-sm {
+    animation-name: anim-slide-in-left-sm;
+    @include anim-pending(translate3d(-200px, 0, 0));
+  }
+
+  &--from-right {
+    animation-name: anim-slide-in-right;
+    @include anim-pending(translate3d(300px, 0, 0));
+  }
+
+  &--from-top {
+    animation-name: anim-slide-in-top;
+    @include anim-pending(translate3d(0, 300px, 0));
+  }
+
+  &--from-top-up {
+    animation-name: anim-slide-in-top-up;
+    @include anim-pending(translate3d(0, -300px, 0));
+  }
+
+  &--zoom {
+    animation-name: anim-zoom-in;
+    @include anim-pending(scale3d(0.3, 0.3, 0.3));
+  }
+
+  &--zoom-out-left {
+    animation-name: anim-zoom-out-left;
+    @include anim-pending(translate3d(-300px, 0, 0) scale3d(1.39, 1.39, 1.39));
+  }
+
+  &--rotate-in {
+    animation-name: anim-rotate-in;
+    transform-origin: center center;
+    @include anim-pending(rotate3d(0, 0, 1, -180deg));
+  }
+
+  &--rotate-bar {
+    animation-name: anim-rotate-bar;
+    transform-origin: center center;
+    @include anim-pending(translate3d(50px, 0, 0) scale3d(0.3, 0.3, 0.3) rotate3d(0, 0, 1, -180deg));
+  }
+
+  &--icon-in {
+    animation-name: anim-icon-in;
+    transform-origin: center center;
+    @include anim-pending(scale(0.35) translate3d(0, -24px, 0));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim--pending {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+
+  .anim {
+    animation: none !important;
+  }
+}
