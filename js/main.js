@@ -149,17 +149,15 @@
       bar.classList.toggle('sticky-cta--visible', window.scrollY > threshold);
     }
   
-    setTimeout(function() {
-      if (hero) {
-        threshold = hero.offsetHeight * 0.6;
-      }
-      onScroll(); 
-    }, 0);
-  
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  function initImageZoom() {
+  window.requestAnimationFrame(function() {
+    if (hero) {
+      threshold = hero.offsetHeight * 0.6;  
+    }
+    onScroll();  
+  });
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+function initImageZoom() {
     var triggers = document.querySelectorAll('[data-zoom-src]');
     if (!triggers.length) return;
 
